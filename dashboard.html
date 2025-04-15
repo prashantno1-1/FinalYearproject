@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VirtualTouch Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+        .main {
+            padding: 20px;
+        }
+        .head {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00ffe7;
+            margin: 10px 0;
+        }
+        .navbox {
+            background-color: rgba(0,0,0,0.3);
+            padding: 10px 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+        .logo {
+            font-size: 28px;
+            color: #00ffe7;
+        }
+        .menu ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        .menu ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .menu ul li a:hover {
+            color: #00ffe7;
+        }
+        .srch {
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            background-color: #00ffe7;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 8px;
+        }
+        .btn:hover {
+            background-color: #00cccc;
+        }
+        .content h1 {
+            font-size: 24px;
+            color: #ffffff;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .section {
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 80%;
+            box-shadow: 0 0 10px #00ffe7;
+        }
+
+        .section h2 {
+            color: #00ffe7;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ffe7;
+        }
+
+        .section button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: #00ffe7;
+            color: black;
+            transition: background-color 0.3s ease;
+        }
+
+        .section button:hover {
+            background-color: #00cccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main">
+    <center><div class="head">WELCOME BACK...</div></center>
+
+    <nav class="navbox">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">VirtualTouch</h2>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/assets/homepage.html">HOME</a></li>
+                    <li><a href="/about">ABOUT</a></li>
+                    <li><a href="/assets/contact.html" target="_blank">CONTACT</a></li>
+                    \li><a href="/assets/history.html" target="_blank">INSTRUCTION</a></li>
+                </ul>
+            </div>
+            <div class="earch">
+                <form id="search-form" action="/" method="post">
+                    <input class="srch" id="search-input" name="name" type="search" placeholder="Type here">
+                    <button class="btn" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <marquee><h1><ins>CONTROL YOUR DEVICES WITH HANDS FREE</ins></h1></marquee>
+    </div>
+
+    <!-- Gesture Sections -->
+    <div class="section">
+        <h2>🎥 Presentation Control</h2>
+        <button onclick="sendRequest('activate')">Activate Gestures</button>
+        <button onclick="sendRequest('deactivate')">Deactivate Gestures</button>
+    </div>
+
+    <div class="section">
+        <h2>🔊 Media & Volume Control</h2>
+        <button onclick="sendRequest('start_volume')">Start Volume Control</button>
+        <button onclick="sendRequest('stop_volume')">Stop Volume Control</button>
+    </div>
+
+    <div class="section">
+        <h2>🖱️ Mouse Control</h2>
+        <button onclick="sendRequest('start_mouse')">Start Mouse Control</button>
+        <button onclick="sendRequest('stop_mouse')">Stop Mouse Control</button>
+    </div>
+
+    <div class="section">
+        <h2>💡 System Settings Control</h2>
+        <button onclick="sendRequest('start_bright')">Start Brightness Control</button>
+        <button onclick="sendRequest('stop_bright')">Stop Brightness Control</button>
+    </div>
+</div>
+
+<script>
+    const searchForm = document.getElementById('search-form');
+    const searchInput = document.getElementById('search-input');
+
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const searchTerm = searchInput.value.trim();
+        if (searchTerm === "kle rls bca website") {
+            window.location.href = "https://www.rlsbca.edu.in/";
+        } else if (searchTerm === "kle mss engineering college website") {
+            window.location.href = "https://www.kletech.ac.in/belagavi/";
+        } else if (searchTerm === "Brightness control") {
+            window.location.href = "https://www.ijnrd.org/papers/IJNRD2303043.pdf/";
+        } else if (searchTerm === "Hand gestures") {
+            window.location.href = "https://en.wikipedia.org/wiki/Gesture_recognition/";
+        } else {
+            const url = `https://www.google.com/search?q=${searchTerm}`;
+            window.location.href = url;
+        }
+    });
+
+    function sendRequest(action) {
+        fetch(`/gesture_control?action=${action}`, { method: 'GET' })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+</body>
+</html>

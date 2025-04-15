@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+       <center><div class="head">WELCOME BACK...</div></center>
+        <nav class="navbox">
+            <div class="navbar">
+                <div class="icon">
+                    <h2 class="logo">EducateBelagavi</h2>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li><a href="/assets/homepage.html">HOME</a></li>
+                        <li><a href="/assets/about.html" target="_blank">ABOUT</a></li>
+                        <li><a href="/assets/contact.html" target="_blank">CONTACT</a></li>
+                        <li><a href="/assets/history.html" target="_blank">EDUCATION HISTORY</a></li>
+                    </ul>
+                </div>
+                <div class="earch">
+                    <form id="search-form" action="/" method="post">
+                        <input class="srch" id="search-input" name="name" type="search" placeholder="Type here">
+                        <button class="btn" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="content">
+            <marquee style="direction:left;"><h1><ins>EDUCATION RELATED WEBSITES FOR STUDENTS REFERENCE</ins></h1></marquee>
+        </div>
+        
+    <script>
+        const searchForm = document.getElementById('search-form');
+        const searchInput = document.getElementById('search-input');
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const searchTerm = searchInput.value.trim();
+            if (searchTerm === "kle rls bca website") {
+                window.location.href = "https://www.rlsbca.edu.in/";
+            } else if (searchTerm === "kle mss engineering college website") {
+                window.location.href = "https://www.kletech.ac.in/belagavi/";
+            } else if (searchTerm === "jnmc college website") {
+                window.location.href = "https://jnmc.edu/";
+            } else if (searchTerm === "kle rls science college website") {
+                window.location.href = "https://rlsinstitute.edu.in/b-sc/";
+            } else {
+                const url = `https://www.google.com/search?q=${searchTerm}`;
+                window.location.href = url;
+            }
+        });
+    </script>
+    <script>
+        function sendRequest(action) {
+            fetch(`/gesture_control?action=${action}`, { method: 'GET' })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+
+    <div class="dashboard-container">
+        <h2>Gesture Control Dashboard</h2>
+        <button class="activate-btn" onclick="sendRequest('activate')">Activate Gestures</button>
+        <button class="deactivate-btn" onclick="sendRequest('deactivate')">Deactivate Gestures</button>
+        <button class="volume-start-btn" onclick="sendRequest('start_volume')">Start Volume Control</button>
+        <button class="volume-stop-btn" onclick="sendRequest('stop_volume')">Stop Volume Control</button>
+    </div>
+</body>
+</html>
