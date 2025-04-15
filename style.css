@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.main {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.head {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.navbox {
+    background: #333;
+    padding: 10px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu ul li {
+    margin: 0 15px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.menu ul li a:hover {
+    color: #f0a500;
+}
+
+.earch {
+    display: flex;
+    align-items: center;
+}
+
+.srch {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.btn {
+    padding: 8px 12px;
+    font-size: 16px;
+    background-color: #f0a500;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #e69500;
+}
+
+.content {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.dashboard-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dashboard-container h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.button-group button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.activate-btn, .deactivate-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.activate-btn:hover, .deactivate-btn:hover {
+    background-color: #218838;
+}
+
+.volume-start-btn, .volume-stop-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.volume-start-btn:hover, .volume-stop-btn:hover {
+    background-color: #c82333;
+}
